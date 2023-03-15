@@ -27,6 +27,22 @@ const Navbar = () => {
               About
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/login"
+              className={({isActive}) => (isActive ? 'active' : '')}
+            >
+              Entrar
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/signup"
+              className={({isActive}) => (isActive ? 'active' : '')}
+            >
+              Cadastrar
+            </NavLink>
+          </li>
 
         </ul>
       </div>
