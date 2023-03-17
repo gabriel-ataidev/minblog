@@ -54,6 +54,7 @@ const SignUp = () => {
           <span>Confirmação de senha:</span>
           <input type="password" name="confirmPassword" required placeholder="Confirme a sua senha" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} />
         </label>
+        <button className="btn">Cadastrar</button>
         {loading ? (
           <button className="btn" disabled>Aguarde...</button>
         ) : (
