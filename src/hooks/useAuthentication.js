@@ -3,7 +3,7 @@ import { db } from "../firebase/config"
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signOut } from 'firebase/auth';
 import { useState, useEffect } from 'react';
 
-const useAuthentication = () => {
+export const useAuthentication = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(null);
 
@@ -60,5 +60,3 @@ const useAuthentication = () => {
     loading
   }
 }
-
-export default useAuthentication;

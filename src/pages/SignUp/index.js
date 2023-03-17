@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import useAuthentication from '../../hooks/useAuthentication';
+import { useAuthentication } from '../../hooks/useAuthentication';
 
 import './index.scss'
 
@@ -28,7 +28,7 @@ const SignUp = () => {
   }
 
   useEffect(() => {
-    if(authError){
+    if (authError) {
       setError(authError);
     }
   }, [authError])
