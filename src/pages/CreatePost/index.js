@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthValue } from '../../context/AuthContext'
+import { useInsertDocument } from '../../hooks/useInsertDocument';
 import './index.scss'
 
 const CreatePost = () => {
@@ -9,8 +10,43 @@ const CreatePost = () => {
   const [body, setBody] = useState("");
   const [tags, setTags] = useState([]);
   const [formError, setFormError] = useState("");
+
+  const { user } = useAuthValue();
+  const { insertDocument, response } = useInsertDocument("posts");
+  const navigate = useNavigate();
+
   const handleSubmit = e => {
     e.preventDefault();
+    setFormError("");
+
+    //validate image URL
+    try {
+      new URL(image);
+    } catch (error) {
+      setFormError("A URL precisa ser válida.")
+    }
+
+    //criar o array de tags
+    const tagsArray = tags.split(",").map(tag => tag.trim().toLowerCase());
+
+    //verificar valores
+    if (!title || !image || !tags || !body) {
+      setFormError("Por favor preencha todos os campos");
+      return;
+    }
+    if (formError) return;
+
+    insertDocument({
+      title,
+      image,
+      body,
+      tagsArray,
+      uid: user.uid,
+      createdBy: user.displayName,
+    })
+
+    //redirect to home page
+    navigate('/');
   }
   return (
     <div className='form'>
@@ -56,7 +92,17 @@ const CreatePost = () => {
             onChange={e => setTags(e.target.value)}
             value={tags} />
         </label>
-        <button className="btn">Publicar</button>
+        {response.loading ? (
+          <button className="btn" disabled>Aguarde...</button>
+        ) : (
+          <button className="btn">Publicar</button>
+        )}
+        {response.error && (
+          <p className='error'>{response.error}</p>
+        )}
+        {formError && (
+          <p className='error'>{formError}</p>
+        )}
       </form>
     </div>
   )
