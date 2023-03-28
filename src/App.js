@@ -10,6 +10,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+import Search from "./pages/Search";
 
 import './index.scss';
 import CreatePost from "./pages/CreatePost";
@@ -40,6 +41,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
+              <Route path="/search" element={<Search />} />
               <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/post/create" element={user ? <CreatePost /> : <Navigate to="/login" />} />

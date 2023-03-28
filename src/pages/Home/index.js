@@ -7,10 +7,14 @@ import PostDetail from "../../components/PostDetail";
 const Home = () => {
   const [query, setQuery] = useState("");
   const {documents: posts, loading} = useFetchDocument("posts");
+  const navigate = useNavigate();
   const handleSubmit = e => {
     e.preventDefault();
+
+    if(query) {
+      return navigate(`/search?q=${query}`)
+    }
   }
-  console.log(posts);
   return (
     <div className="home">
       <div className='search_form'>
