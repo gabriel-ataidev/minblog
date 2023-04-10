@@ -12,7 +12,7 @@ const Search = () => {
 
   return (
     <div className="search-container">
-      <h2>Search</h2>
+      <h2>Pesquisa pela tag "{search}"</h2>
       <>
         {posts && posts.length === 0 ? (
           <>

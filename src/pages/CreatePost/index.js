@@ -50,7 +50,7 @@ const CreatePost = () => {
   }
   return (
     <div className='form'>
-      <h2>Criar post</h2>
+      <h1>Criar post</h1>
       <p>Escreva sobre o que quiser e compartilhe!</p>
       <form onSubmit={handleSubmit}>
         <label>

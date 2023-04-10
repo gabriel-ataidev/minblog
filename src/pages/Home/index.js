@@ -25,7 +25,6 @@ const Home = () => {
         </form>
       </div>
       <div className="posts">
-        <h1>Posts...</h1>
         {posts && posts.length === 0 ? (
           <div className="no_posts">
             <p>Não foram encontrados posts</p>

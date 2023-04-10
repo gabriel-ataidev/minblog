@@ -16,6 +16,7 @@ import './index.scss';
 import CreatePost from "./pages/CreatePost";
 import Dashboard from "./pages/Dashboard";
 import Post from "./pages/Post";
+import EditPost from "./pages/EditPost";
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -44,6 +45,8 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/search" element={<Search />} />
               <Route path="/posts/:id" element={<Post />} />
+              <Route path="/posts/edit/:id" element={user ? <EditPost /> : <Navigate to="/login" />}
+              />
               <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/post/create" element={user ? <CreatePost /> : <Navigate to="/login" />} />

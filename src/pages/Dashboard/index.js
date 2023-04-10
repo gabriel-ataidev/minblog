@@ -10,14 +10,14 @@ const Dashboard = () => {
   const { user } = useAuthValue();
   const uid = user.uid;
 
-  const { documents: posts, loading } = useFetchDocuments("posts", null, uid);
+  const { documents: posts } = useFetchDocuments("posts", null, uid);
 
   const { deleteDocument } = useDeleteDocument("posts");
 
 
   return (
     <div className="dashboard">
-      <h2>Dashboard</h2>
+      <h1>Dashboard</h1>
       <p>Gerencie os seus posts</p>
       {posts && posts.length === 0 ? (
         <div className="noposts">
